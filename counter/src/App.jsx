@@ -6,15 +6,18 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
   const increment = ()=>(
-    setCount((count)=>(count+1))
+    setCount(prevcount=>prevcount+1)
   )
+  const decrement = () => {
+    setCount((prevCount) => Math.max(prevCount - 1, 0));
+  };
 
 
   return (
     <>
     <h1>Count is {count}</h1>
        <button onClick={increment}>Click to incremet</button>
-       <button onClick={()=>{setCount(count=>{return count-1})}}>Click to decrement</button>
+       <button onClick={decrement}>Click to decrement</button>
     </>
   )
 }
